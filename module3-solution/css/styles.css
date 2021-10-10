@@ -1,0 +1,32 @@
+.{
+	box-sizing: border-box;
+}
+body{
+	font-size:  16px;
+
+}
+
+#header-nav{
+	background-color: #f6b319;
+	margin: 0;
+	padding: 0;
+}
+#top{
+
+
+}
+
+#chicken{
+	background-color: lightgrey;
+	
+}
+
+#beef{
+	background-color: lightgrey;
+}
+
+#sushi{
+	background-color: lightgrey;
+
+}
+
