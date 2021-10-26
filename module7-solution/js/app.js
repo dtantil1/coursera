@@ -12,8 +12,9 @@ angular.module('ShoppingListCheckOff',[])
 
 function customDollarFilter(){
 	return function(cost){
+		cost = cost.toFixed(2);
 		cost = "$$$" + cost;
-		return cost; 
+		return cost;
 	}
 
 }
