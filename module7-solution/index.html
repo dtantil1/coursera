@@ -34,7 +34,8 @@
     <div class="col-md-6" ng-controller='ToBuyController as showList1'>
      <h2>To Buy:</h2>
      <ul>
-       <li ng-repeat="item in showList1.items">Buy {{ item.quantity }} {{ item.name }} <button ng-click="showList1.buy($index)" class="btn btn-default"><span class="glyphicon" ></span> Buy</button></li>
+       <li ng-repeat="item in showList1.items">Buy {{ item.quantity }} {{ item.name }} for {{item.pricePerItem | customDollar}} each
+        <button ng-click="showList1.buy($index)" class="btn btn-default"><span class="glyphicon" ></span> Buy</button></li>
 
      </ul>
      <div ng-if="!showList1.items.length" class="emptyMessage">Everything is bought!</div>
@@ -45,7 +46,7 @@
      <h2>Already Bought:</h2>
      <ul>
         <li ng-repeat="item in showList.items">
-          Bought {{ item.quantity }} {{ item.name }}
+          Bought {{ item.quantity }} {{ item.name }} for a total price of {{ item.quantity * item.pricePerItem | customDollar}}
           
         </li>
       </ul>

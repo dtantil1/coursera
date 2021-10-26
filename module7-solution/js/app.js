@@ -6,18 +6,28 @@
 angular.module('ShoppingListCheckOff',[])
 .controller('ToBuyController', ToBuyController)
 .controller('AlreadyBoughtController', AlreadyBoughtController)
-.service('ShoppingListCheckOffService', ShoppingListCheckOffService);
+.service('ShoppingListCheckOffService', ShoppingListCheckOffService)
+.filter('customDollar',customDollarFilter);
+
+
+function customDollarFilter(){
+	return function(cost){
+		cost = "$$$" + cost;
+		return cost; 
+	}
+
+}
 
 
 function ShoppingListCheckOffService(){
 	let service = this;
 
 	let toBuyList = [
-		{ name : "Chickens", quantity : 3},
-		{ name : "Cookies", quantity : 8},
-		{ name : "Meats", quantity : 4},
-		{ name : "Pepto Bismols", quantity : 1},
-		{ name : "Olive Oils", quantity : 2}
+		{ name : "Chickens", quantity : 3, pricePerItem : 5.01},
+		{ name : "Cookies", quantity : 8, pricePerItem : 3.00},
+		{ name : "Meats", quantity : 4, pricePerItem : 9.08},
+		{ name : "Pepto Bismols", quantity : 1, pricePerItem : 15.99},
+		{ name : "Olive Oils", quantity : 2, pricePerItem : 5.23}
 	]
 
 	let boughtList = [];
