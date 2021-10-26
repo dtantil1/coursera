@@ -22,6 +22,7 @@
       button > span {
         color: green;
       }
+      .resizedTextbox {width: 50px; height: 20px}
     </style>
   </head>
 <body>
@@ -34,7 +35,7 @@
     <div class="col-md-6" ng-controller='ToBuyController as showList1'>
      <h2>To Buy:</h2>
      <ul>
-       <li ng-repeat="item in showList1.items">Buy {{ item.quantity }} {{ item.name }} for {{item.pricePerItem | customDollar}} each
+       <li ng-repeat="item in showList1.items">Buy <input class="resizedTextbox" type="number" ng-model="item.quantity"> &nbsp {{ item.name }} for {{item.pricePerItem | customDollar}} each
         <button ng-click="showList1.buy($index)" class="btn btn-default"><span class="glyphicon" ></span> Buy</button></li>
 
      </ul>

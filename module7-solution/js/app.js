@@ -23,10 +23,10 @@ function ShoppingListCheckOffService(){
 	let service = this;
 
 	let toBuyList = [
-		{ name : "Chickens", quantity : 3, pricePerItem : 5.01},
-		{ name : "Cookies", quantity : 8, pricePerItem : 3.00},
-		{ name : "Meats", quantity : 4, pricePerItem : 9.08},
-		{ name : "Pepto Bismols", quantity : 1, pricePerItem : 15.99},
+		{ name : "Chickens", quantity : 3, pricePerItem : 5},
+		{ name : "Cookies", quantity : 8, pricePerItem : 3},
+		{ name : "Meats", quantity : 4, pricePerItem : 9},
+		{ name : "Pepto Bismols", quantity : 1, pricePerItem : 15},
 		{ name : "Olive Oils", quantity : 2, pricePerItem : 5.23}
 	]
 
