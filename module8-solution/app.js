@@ -4,7 +4,13 @@
 angular.module('NarrowItDownApp', [])
 .controller('NarrowItDownController', NarrowItDownController)
 .service('MenuCategoriesService', MenuCategoriesService)
-.constant('ApiBasePath', "https://davids-restaurant.herokuapp.com");
+.constant('ApiBasePath', "https://davids-restaurant.herokuapp.com")
+.directive('menuListDirective', MenuListDirective);
+
+
+function MenuListDirective
+
+
 
 
 NarrowItDownController.$inject = ['MenuCategoriesService','$scope'];
