@@ -7,16 +7,37 @@ angular.module('NarrowItDownApp', [])
 .constant('ApiBasePath', "https://davids-restaurant.herokuapp.com")
 .directive('foundItems', FoundItems);
 
+let x = -1;
 
 function FoundItems(){
   var ddo = {
     templateUrl: "menu.html",
-
-
+    link: foundLink
   };
 
   return ddo;
 }
+
+function foundLink(scope, element, attrs, controller){
+  scope.$watch('menu.foundItems', function(){
+    console.log("x= " + x)
+    if(x === 0){
+      displayNothingFound();
+    }
+    else
+      hideNothingFound();
+  });
+
+  function displayNothingFound(){
+    //using Angular Jqlite
+    let emptyElement = element.find("h4");
+    emptyElement.css('display','block');
+  }
+  function hideNothingFound(){
+    let emptyElement = element.find("h4");
+    emptyElement.css('display','none');
+  }
+};
 
 
 
@@ -24,12 +45,12 @@ function FoundItems(){
 NarrowItDownController.$inject = ['MenuCategoriesService','$scope'];
 function NarrowItDownController(MenuCategoriesService, $scope) {
   var menu = this;
-  menu.searchTerm = "chicken";
+  
   let searchTerm = menu.searchTerm;
   var promise = MenuCategoriesService.getMenuCategories();
-
+  
   $scope.term = "";
-  console.log("SCOPE: " + $scope.term);
+  
 
   $scope.findIt = function(term){
     searchTerm = $scope.term;
@@ -37,25 +58,26 @@ function NarrowItDownController(MenuCategoriesService, $scope) {
       menu.categories = response.data;
       let items = menu.categories;
       let foundItems = [];
+      if(searchTerm.length === 0)
+        searchTerm = undefined;
       for(let i = 0; i < items.menu_items.length; i++){
         let text = items.menu_items[i].description;
         if(text.includes(searchTerm)){
           foundItems.push(items.menu_items[i])
         }
       }
-      console.log(foundItems)
+      console.log("searchTerm = " + searchTerm)
       menu.foundItems = foundItems;
-    
+      x = foundItems.length;
     })
     .catch(function (error) {
     console.log("Something went terribly wrong.");
     });
   }
   $scope.onRemove = function(index){
-    console.log("REMOVE Index:" + index)
-    console.log(menu.foundItems);
     menu.foundItems.splice(index,1);
-    console.log(menu.foundItems);
+    
+
 
   };
 
