@@ -5,10 +5,18 @@ angular.module('NarrowItDownApp', [])
 .controller('NarrowItDownController', NarrowItDownController)
 .service('MenuCategoriesService', MenuCategoriesService)
 .constant('ApiBasePath', "https://davids-restaurant.herokuapp.com")
-.directive('menuListDirective', MenuListDirective);
+.directive('foundItems', FoundItems);
 
 
-function MenuListDirective
+function FoundItems(){
+  var ddo = {
+    templateUrl: "menu.html",
+
+
+  };
+
+  return ddo;
+}
 
 
 
@@ -25,27 +33,30 @@ function NarrowItDownController(MenuCategoriesService, $scope) {
 
   $scope.findIt = function(term){
     searchTerm = $scope.term;
-  promise.then(function (response) {
-    menu.categories = response.data;
-    let items = menu.categories;
-    let foundItems = [];
-    for(let i = 0; i < items.menu_items.length; i++){
-      let text = items.menu_items[i].description;
-      if(text.includes(searchTerm)){
-        foundItems.push(items.menu_items[i])
-        
+    promise.then(function (response) {
+      menu.categories = response.data;
+      let items = menu.categories;
+      let foundItems = [];
+      for(let i = 0; i < items.menu_items.length; i++){
+        let text = items.menu_items[i].description;
+        if(text.includes(searchTerm)){
+          foundItems.push(items.menu_items[i])
+        }
       }
-    }
-    console.log(foundItems)
-    menu.foundItems = foundItems;
+      console.log(foundItems)
+      menu.foundItems = foundItems;
     
-  })
-  .catch(function (error) {
+    })
+    .catch(function (error) {
     console.log("Something went terribly wrong.");
-  });
-}
+    });
+  }
   $scope.onRemove = function(index){
     console.log("REMOVE Index:" + index)
+    console.log(menu.foundItems);
+    menu.foundItems.splice(index,1);
+    console.log(menu.foundItems);
+
   };
 
   
