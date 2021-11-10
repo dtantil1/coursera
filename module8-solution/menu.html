@@ -1,8 +1,9 @@
   <div>
-      <ul>
-      <li ng-repeat="category in menu.foundItems">
-        {{category.name}} ({{category.short_name}}): {{category.description}}   
-        <button class="btn" ng-click="onRemove($index)">Don't want this one!</button>   
-      </li>
-    </ul>
+      <!-- <ul> -->
+      <div ng-repeat="category in menu.foundItems" class="border-2">
+        <div class="col-lg-10 me"><b>{{category.name}}</b> ({{category.short_name}}): {{category.description}} </div>  
+        <div class="col-lg-2 me"><button class="btn btn-danger" ng-click="onRemove($index)">Don't want this one!</button></div>  
+    </div>
+      <!-- </li> -->
+    <!-- </ul> -->
   </div>
