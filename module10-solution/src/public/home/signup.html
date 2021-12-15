@@ -85,15 +85,12 @@
           <br>
 
           <input type="text" name="favorite" placeholder="Favorite menu item #"
-          ng-model="reg.user.favorite"
+          ng-model="reg.user.favorite" ng-blur="onBlurAction()")
           required
           
           ng-maxlength="10">
           
-          <span
-            ng-if="(regForm.favorite.$error.minlength || regForm.favorite.$error.required) && regForm.favorite.$touched">
-            Username must be at least 4 characters long
-          </span>
+          <span class="error"  ng-if="response.data.name === undefined && boom === true">No such menu item exists!!!!</span>
           <br>
 
 
@@ -116,7 +113,7 @@
       Last Name: {{ reg.user.lname}} <br>
       Email: {{ reg.user.email}} <br>
       Phone: {{ reg.user.phone }} <br>
-      Favorite menu item: {{ reg.user.favorite }}&nbsp <span nf-if="response.data.name !== undefined">{{response.data.name}}</span> 
+      Favorite menu item: {{ reg.user.favorite }}&nbsp <span ng-if="response.data.name !== undefined">{{response.data.name}}</span> 
       <span class="error"  ng-if="response.data.name === undefined">No such menu item exists!!!!</span>
       <br>
 

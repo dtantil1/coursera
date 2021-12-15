@@ -13,6 +13,22 @@ RegistrationController.$inject = ['$rootScope', '$http'];
 function RegistrationController($rootScope, $http) {
   var reg = this;
 
+  $rootScope.onBlurAction = function(){
+    console.log("ON BLUR")
+    $rootScope.boom = true
+    let menu_item = reg.user.favorite
+    try{
+      $http.get("https://davids-restaurant.herokuapp.com/menu_items/" + menu_item+".json")
+      .then(function(response){
+        console.log("response.data.name = " + response.data.name)
+        $rootScope.response = response
+      })
+    }catch{
+      $rootScope.response = undefined
+    }
+
+  }
+
   reg.submit = function () {
     reg.completed = true;
     $rootScope.fname = reg.user.fname
