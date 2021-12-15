@@ -1,0 +1,16 @@
+MY INFO:
+
+<div ng-controller = "MyInfoController as info">
+
+<div ng-if="fname === udnefined">Not yet signed up! Sign up now!</div>
+
+<div ng-if="fname !== undefined">
+    <span >First name: {{ fname }} <br></span>
+    <span >Last name: {{ lname }} <br></span>
+    <span >Email: {{ email }} <br></span>
+    <span >phone: {{ phone }} <br></span>
+    <span >Favorite menu item: {{ favorite }} <br></span>
+</div>
+
+
+</div>
