@@ -2,7 +2,7 @@ MY INFO:
 
 <div ng-controller = "MyInfoController as info">
 
-<div ng-if="fname === udnefined">Not yet signed up! Sign up now!</div>
+<div ng-if="fname === udnefined"><a ui-sref="public.signup">Not yet signed up! Sign up now!</a></div>
 
 <div ng-if="fname !== undefined">
     <span >First name: {{ fname }} <br></span>
