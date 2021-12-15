@@ -42,8 +42,11 @@ function RegistrationController($rootScope, $http) {
 
     $http.get("https://davids-restaurant.herokuapp.com/menu_items/" + menu_item+".json")
     .then(function(response){
-      console.log(response.data.name)
+      console.log(response.data)
       $rootScope.response = response
+      $rootScope.foodName = response.data.name
+      $rootScope.desc = response.data.description
+
     })
 
 
